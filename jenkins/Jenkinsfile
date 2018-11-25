@@ -1,0 +1,71 @@
+/*
+ * Jenkinsfile
+ * project: dockapp
+ * 2018/11/25 Greg Shaw
+ */
+
+pipeline {
+    agent {
+    	docker {
+    		image 'ubuntu:latest'
+    		label 'cthulhu'
+    	}
+    }
+/*    triggers {
+    	cron('H/30 * * * *')
+    }
+*/
+    options {
+    	timestamps()
+    }
+    stages {
+
+		/*
+    	 * dev
+    	 */
+        stage('dev') {
+            steps {
+                echo "This is the 'dev' stage"
+                sh '''
+                	uname -a
+                	printenv
+                '''
+            }
+        }
+
+    	/*
+    	 * build
+    	 */
+/*        stage('build') {
+            steps {
+                sh '''
+                    make clean
+                    make
+                '''
+            }
+        }
+*/        
+        /*
+    	 * unit-test
+    	 */
+/*        stage('unit-test') {
+            steps {
+                sh '''
+                    ./petril
+                '''
+            }
+        }
+*/        
+		/*
+    	 * deliver
+    	 */
+/*        stage('deliver') {
+            steps {
+                sh '''
+                    cp ./petril /tmp
+                '''
+            }
+        }
+*/
+    }
+}
