@@ -28,7 +28,14 @@ pipeline {
                 echo "This is the 'dev' stage"
                 sh '''
                 	uname -a
+			echo
                 	printenv
+			echo
+			if [ -f /etc/SuSE-release ]; then
+			  cat /etc/SuSE-release
+			else
+			  echo "File does not exist: /etc/SuSE-release"
+			fi
                 '''
             }
         }
