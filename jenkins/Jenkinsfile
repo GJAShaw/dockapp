@@ -31,10 +31,11 @@ pipeline {
 			echo
                 	printenv
 			echo
-			if [ -f /etc/SuSE-release ]; then
-			  cat /etc/SuSE-release
+			OS_RELEASE_FILE='/etc/os-release'
+			if [ -f ${OS_RELEASE_FILE} ]; then
+			  cat ${OS_RELEASE_FILE}
 			else
-			  echo "File does not exist: /etc/SuSE-release"
+			  echo "File does not exist: ${OS_RELEASE_FILE}"
 			fi
                 '''
             }
